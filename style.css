@@ -1,0 +1,37 @@
+main {
+    width: 500px;
+}
+#piano {
+    display: flex;
+    flex-direction: row;
+    
+}
+.blanche, .noire {
+    border: 1px solid black;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blanche {
+background-color: white;
+color: black;
+height: 200px;
+    width: 50px;
+}
+
+.noire {
+    background-color: black;
+    color: white;
+    height: 100px;
+    width: 25px;
+}
+
+#displayPressedNote, #displayAccord {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.pressedNote {
+    background-color: red;
+}
