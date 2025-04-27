@@ -9,6 +9,8 @@
 
     <body>
         <main>
+            <p id="timer">Temps : 0 sec</p>
+            <p id="score">Score : 0</p>
             <p id="validAccord">ceci est un piano</p>
             <p id="displayPressedNote">Note pressée</p>
             <p id="questionAccord">Question</p>

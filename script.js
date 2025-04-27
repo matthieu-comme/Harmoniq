@@ -3,7 +3,23 @@ $(document).ready(() => {
     const keyArray = ['q','z','s','e','d','f','t','g','y','h','u','j']; 
     const touches = $('.touche').toArray(); // tableau de div, les touches du piano
     var activeNote = []; // notes jouées
-
+    var time = 0;
+    var score = 0;
+    const Notes = {
+        DO: 0,
+        REb: 1,
+        RE: 2,
+        MIb: 3,
+        MI: 4,
+        FA: 5,
+        SOLb: 6,
+        SOL: 7,
+        LAb: 8,
+        LA: 9,
+        SIb: 10,
+        SI: 11
+    };
+    const gammeMajeure = [0, 2, 4, 5, 7, 9, 11];
    // affichage du nom des notes sur les touches 
    $('.value').hide();
    var isVisibleNote = false;
@@ -35,8 +51,11 @@ $(document).ready(() => {
     }
    // affiche si l'accord est correct ou non
    function displayValidAccord() {
-    if(isValidAccord()) 
+    if(isValidAccord()) {
         var string = 'OUI';
+        updateScore();
+        $('#btnAccord').trigger("click");
+    }
     else 
         var string = 'NON';
     $('#validAccord').text(string);
@@ -53,7 +72,7 @@ $(document).ready(() => {
         if(keyArray.includes(key)) {
             var index = keyArray.indexOf(key);
             var pressedTouche = touches[index];
-            var note = $(pressedTouche).data('note');            
+            var note = getNote(pressedTouche);            
             $(pressedTouche).addClass('pressedNote');  
             if(!activeNote.includes(note)) {
                 activeNote.push(note);
@@ -98,4 +117,15 @@ $(document).ready(() => {
   $('#btnAccord').click(function() {
         getAccordMajeur();
   })
+
+  function updateTimer() {
+    time++;
+    $('#timer').text("Temps : " + time + " sec");
+  }
+  function updateScore() {
+        score++;
+        $('#score').text("Score : " + score);
+  }
+
+  window.setInterval(updateTimer, 1000);
   });
